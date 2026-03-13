@@ -1,17 +1,16 @@
 from datetime import datetime, timedelta
 
-# Vaqtinchalik xotirada saqlash (Real loyihada Redis yaxshiroq)
+
 attempts_db = {} 
 
 def check_block(phone: str):
     if phone in attempts_db:
         data = attempts_db[phone]
         if data['count'] >= 5:
-            # 10 daqiqa o'tganini tekshirish
             if datetime.now() < data['blocked_until']:
                 return False
             else:
-                reset(phone) # Vaqt o'tdi, blokdan ochamiz
+                reset(phone) 
     return True
 
 def register_fail(phone: str):

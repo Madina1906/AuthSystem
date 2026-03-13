@@ -36,3 +36,4 @@ def login_user(data, db: Session):
     })
 
     return access, refresh
+

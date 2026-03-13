@@ -9,19 +9,14 @@ class Role(str, enum.Enum):
 
 
 class User(Base):
-
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-
     first_name = Column(String)
-
     last_name = Column(String)
-
-    phone = Column(String, unique=True)
-
+    phone = Column(String, unique=True, nullable=True)  
     password = Column(String)
-
     google_id = Column(String, nullable=True)
-
     role = Column(Enum(Role), default=Role.ADMIN)
+
+
